@@ -1,9 +1,11 @@
-import './App.css';
-
 import { Routes } from './routes';
 
-function App() {
-  return <Routes />;
-}
+import { ThemeProvider } from './providers/ThemeProvider';
 
-export default App;
+export default function App() {
+  return (
+    <ThemeProvider>
+      <Routes />
+    </ThemeProvider>
+  );
+}
