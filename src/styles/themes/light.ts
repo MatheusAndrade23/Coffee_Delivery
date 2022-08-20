@@ -22,5 +22,16 @@ export const lightTheme = {
       primary: '"Roboto", sans-serif',
       secondary: '"Baloo 2", cursive',
     },
+    sizes: {
+      xhuge: '4.4rem',
+      huge: '3.2rem',
+      big: '2.4rem',
+      medium2: '2rem',
+      medium: '1.8rem',
+      small4: '1.6rem',
+      small3: '1.4rem',
+      small2: '1.2rem',
+      small: '1rem',
+    },
   },
 };

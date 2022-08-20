@@ -14,12 +14,16 @@ export const GlobalStyles = createGlobalStyle`
     height: 100vh;
   }
 
+  body {
+    font-size: 1.6rem;
+  }
+
   h1, h2, h3, h4, h5, h6 {
     font-family: ${({ theme }) => theme.fonts.family.secondary};
   }
 
-  body {
-    font-size: 1.6rem;
+  button {
+    cursor: pointer;
   }
 
   a {
