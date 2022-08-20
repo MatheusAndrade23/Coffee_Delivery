@@ -1,9 +1,11 @@
 import {
-  CoffeeCardContainer,
+  FullCoffeeCardContainer,
   CoffeeInfo,
   CoffeeSale,
   CoffeeTags,
 } from './styles';
+
+import { CoffeeAmount } from '../CoffeeAmount';
 
 import { IoMdCart } from 'react-icons/io';
 
@@ -16,7 +18,7 @@ import arabeCoffee from '../../assets/coffee-images/arabe.png';
 
 export const FullCoffeeCard = ({ id, amount }: FullCoffeeCardProps) => {
   return (
-    <CoffeeCardContainer>
+    <FullCoffeeCardContainer>
       <img src={arabeCoffee} />
       <CoffeeTags>
         {MockTags.map((tag) => (
@@ -31,10 +33,12 @@ export const FullCoffeeCard = ({ id, amount }: FullCoffeeCardProps) => {
         <p>
           R$ <span>8,00</span>
         </p>
-        <input type="number" min="0" max="99" />
-        <IoMdCart />
+        <CoffeeAmount amount={2} />
+        <button>
+          <IoMdCart />
+        </button>
       </CoffeeSale>
-    </CoffeeCardContainer>
+    </FullCoffeeCardContainer>
   );
 };
 
