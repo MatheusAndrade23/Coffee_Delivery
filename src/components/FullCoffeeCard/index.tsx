@@ -9,31 +9,37 @@ import { CoffeeAmount } from '../CoffeeAmount';
 
 import { IoMdCart } from 'react-icons/io';
 
+type Coffee = {
+  title: string;
+  tags: string[];
+  description: string;
+  srcImg: string;
+  price: string;
+};
+
 interface FullCoffeeCardProps {
-  id: string;
-  amount: number;
+  coffee: Coffee;
 }
 
-import arabeCoffee from '../../assets/coffee-images/arabe.png';
-
-export const FullCoffeeCard = ({ id, amount }: FullCoffeeCardProps) => {
+export const FullCoffeeCard = ({ coffee }: FullCoffeeCardProps) => {
+  const { title, tags, description, srcImg, price } = coffee;
   return (
     <FullCoffeeCardContainer>
-      <img src={arabeCoffee} />
+      <img src={srcImg} alt={`${title} - ${description}`} />
       <CoffeeTags>
-        {MockTags.map((tag) => (
+        {tags.map((tag) => (
           <span>{tag}</span>
         ))}
       </CoffeeTags>
       <CoffeeInfo>
-        <h6>Expresso</h6>
-        <p>Bebida preparada com café expresso e cubos de gelo.</p>
+        <h6>{title}</h6>
+        <p>{description}</p>
       </CoffeeInfo>
       <CoffeeSale>
         <p>
-          R$ <span>8,00</span>
+          R$ <span>{price}</span>
         </p>
-        <CoffeeAmount amount={2} />
+        <CoffeeAmount amount={0} />
         <button>
           <IoMdCart />
         </button>
@@ -41,5 +47,3 @@ export const FullCoffeeCard = ({ id, amount }: FullCoffeeCardProps) => {
     </FullCoffeeCardContainer>
   );
 };
-
-const MockTags = ['TRADICIONAL', 'GELADO'];

@@ -23,6 +23,7 @@ export const lightTheme = {
       secondary: '"Baloo 2", cursive',
     },
     sizes: {
+      xxhuge: '4.8rem',
       xhuge: '4.4rem',
       huge: '3.2rem',
       big: '2.4rem',
