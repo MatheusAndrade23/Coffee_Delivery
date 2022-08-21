@@ -25,6 +25,7 @@ export const CoffeeTags = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  text-transform: uppercase;
   font-size: ${({ theme }) => theme.fonts.sizes.small};
 
   & span {
