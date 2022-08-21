@@ -16,6 +16,7 @@ export const GlobalStyles = createGlobalStyle`
 
   body {
     font-size: 1.6rem;
+    background-color: ${({ theme }) => theme.colors['base-background']}
   }
 
   h1, h2, h3, h4, h5, h6 {

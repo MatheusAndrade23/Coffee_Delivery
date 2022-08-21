@@ -12,17 +12,21 @@ import { PageNotFound } from './pages/PageNotFound';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 
+import { Container } from './components/Container';
+
 export const Routes = () => {
   return (
     <Router>
-      <Header />
-      <Switch>
-        <Route path="/history" element={<History />} />
-        <Route path="/order" element={<Order />} />
-        <Route path="/" element={<Home />} />
-        <Route path="*" element={<PageNotFound />} />
-      </Switch>
-      <Footer />
+      <Container>
+        <Header />
+        <Switch>
+          <Route path="/history" element={<History />} />
+          <Route path="/order" element={<Order />} />
+          <Route path="/" element={<Home />} />
+          <Route path="*" element={<PageNotFound />} />
+        </Switch>
+        <Footer />
+      </Container>
     </Router>
   );
 };

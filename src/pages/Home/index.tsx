@@ -1,11 +1,5 @@
-import { FullCoffeeCard } from '../../components/FullCoffeeCard';
-import { HalfCoffeeCard } from '../../components/HalfCoffeeCard';
+import { Header } from '../../components/Header';
 
 export const Home = () => {
-  return (
-    <>
-      <HalfCoffeeCard />
-      <FullCoffeeCard id="xcvxcv" amount={10} />
-    </>
-  );
+  return <></>;
 };
