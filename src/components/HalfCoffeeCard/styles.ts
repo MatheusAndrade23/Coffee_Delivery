@@ -1,7 +1,6 @@
 import styled, { css } from 'styled-components';
 
 export const HalfCoffeeCardContainer = styled.div`
-  margin: 150px;
   height: 8rem;
   width: 36.8rem;
   padding: 0 0.8rem;
