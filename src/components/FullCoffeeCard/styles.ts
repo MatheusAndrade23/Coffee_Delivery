@@ -4,10 +4,7 @@ export const FullCoffeeCardContainer = styled.div`
   height: 31rem;
   width: 25.6rem;
   background-color: ${({ theme }) => theme.colors['base-card']};
-  border-top-right-radius: 30px;
-  border-top-left-radius: 5px;
-  border-bottom-right-radius: 5px;
-  border-bottom-left-radius: 30px;
+  border-radius: 5px 30px;
   display: flex;
   flex-direction: column;
   align-items: center;
