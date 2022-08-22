@@ -135,7 +135,7 @@ const coffees = [
     title: 'Latte Vegano',
     tags: ['Especial', 'Vegano'],
     description:
-      'Uma dose de café expresso, com o dobro de leite soja e espuma cremosa',
+      'Uma dose de café expresso com  leite de soja e espuma cremosa',
     srcImg: latte,
     price: '11,00',
   },
