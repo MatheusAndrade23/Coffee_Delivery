@@ -4,38 +4,63 @@ import {
   PriceTag,
   CompleteOrderButton,
   CartInfoContainer,
+  CartEmptyMessage,
+  CoffeesList,
 } from './styles';
+
+import { useContext } from 'react';
+
+import { OrdersContext } from '../../../../providers/OrdersProvider';
 
 import { HalfCoffeeCard } from '../../../../components/HalfCoffeeCard';
 
 export const CartInfo = () => {
+  const { cart, productsPrice, deliveryPrice, totalPrice } =
+    useContext(OrdersContext);
+
+  const isCartEmpty = cart.length === 0;
+  const isButtonDisabled = isCartEmpty;
+
   return (
     <CartInfoContainer>
       <h2>Cafés Selecionados</h2>
       <CartList>
-        <HalfCoffeeCard />
-        <HalfCoffeeCard />
+        {isCartEmpty ? (
+          <CartEmptyMessage>
+            <h2>Carrinho vazio!</h2>
+            <a href="/">Clique aqui para ver nosso catálogo de cafés!</a>
+          </CartEmptyMessage>
+        ) : (
+          <CoffeesList>
+            {cart.map((coffee) => (
+              <HalfCoffeeCard coffee={coffee} key={coffee.id} />
+            ))}
+          </CoffeesList>
+        )}
+
         <PriceInfo>
           <PriceTag>
             <p>Total de Itens</p>
             <span>
-              R$<span>29,70</span>
+              R$<span>{`${productsPrice},00`}</span>
             </span>
           </PriceTag>
           <PriceTag>
             <p>Entrega</p>
             <span>
-              R$<span>3,50</span>
+              R$<span>{`${deliveryPrice},00`}</span>
             </span>
           </PriceTag>
           <PriceTag>
-            <h5>Entrega</h5>
+            <h5>Total</h5>
             <h5>
-              R$<span>3,50</span>
+              R$<span>{`${totalPrice},00`}</span>
             </h5>
           </PriceTag>
         </PriceInfo>
-        <CompleteOrderButton>Confirmar Pedido</CompleteOrderButton>
+        <CompleteOrderButton disabled={isButtonDisabled}>
+          Confirmar Pedido
+        </CompleteOrderButton>
       </CartList>
     </CartInfoContainer>
   );
