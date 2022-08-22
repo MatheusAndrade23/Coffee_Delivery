@@ -40,6 +40,7 @@ export const HeaderContainer = styled.header`
     }
 
     & a {
+      position: relative;
       height: 100%;
       width: 3.8rem;
       display: flex;
@@ -49,6 +50,22 @@ export const HeaderContainer = styled.header`
       font-size: 2.2rem;
       background-color: ${({ theme }) => theme.colors['3-color']};
       color: ${({ theme }) => theme.colors['1-color']};
+
+      & span {
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        top: -7px;
+        right: -7px;
+        color: ${({ theme }) => theme.colors['base-light-color']};
+        background-color: ${({ theme }) => theme.colors['1-color']};
+        font-size: ${({ theme }) => theme.fonts.sizes.small2};
+        border-radius: 50%;
+        width: 20px;
+        height: 20px;
+        text-align: center;
+      }
     }
   }
 `;
