@@ -5,24 +5,55 @@ import {
   Remove,
 } from './styles';
 
+import { useState, useContext } from 'react';
+
 import { CoffeeAmount } from '../CoffeeAmount';
 
 import { FaRegTrashAlt } from 'react-icons/fa';
 
-import arabeCoffee from '../../assets/coffee-images/arabe.png';
+import { CoffeeType, OrdersContext } from '../../providers/OrdersProvider';
 
-export const HalfCoffeeCard = () => {
+interface HalfCoffeeCardProps {
+  coffee: CoffeeType;
+}
+
+export const HalfCoffeeCard = ({ coffee }: HalfCoffeeCardProps) => {
+  const { title, srcImg, price, amount, id } = coffee;
+
+  const { removeCoffeeFromCart } = useContext(OrdersContext);
+  const [coffeeAmount, setCoffeeAmount] = useState(() => (amount ? amount : 0));
+
+  const handleRemoveCoffeeFromCart = () => {
+    removeCoffeeFromCart(id);
+  };
+
+  const addOne = () => {
+    if (coffeeAmount < 9) {
+      setCoffeeAmount((state) => state + 1);
+    }
+  };
+
+  const removeOne = () => {
+    if (coffeeAmount > 0) {
+      setCoffeeAmount((state) => state - 1);
+    }
+  };
+
   return (
     <HalfCoffeeCardContainer>
-      <img src={arabeCoffee} />
+      <img src={srcImg} alt={title} />
       <div>
         <CoffeeInfo>
-          <h6>Expresso Tradicional</h6>
-          <p>{`R$ ${700}`}</p>
+          <h6>{title}</h6>
+          <p>{`R$ ${price}`}</p>
         </CoffeeInfo>
         <CoffeeSale>
-          <CoffeeAmount amount={3} />
-          <Remove>
+          <CoffeeAmount
+            amount={coffeeAmount}
+            addOne={addOne}
+            removeOne={removeOne}
+          />
+          <Remove onClick={handleRemoveCoffeeFromCart}>
             <FaRegTrashAlt />
             <span>REMOVER</span>
           </Remove>

@@ -86,8 +86,12 @@ export const CoffeeSale = styled.div`
     justify-content: center;
     transition: 0.25s;
 
-    &:hover {
+    &:hover:not(:disabled) {
       background-color: ${({ theme }) => theme.colors['5-color']};
+    }
+
+    &:disabled {
+      cursor: not-allowed;
     }
   }
 
