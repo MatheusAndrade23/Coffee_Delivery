@@ -8,7 +8,9 @@ import logo from '../../assets/logo.png';
 export const Header = () => {
   return (
     <HeaderContainer>
-      <img src={logo} />
+      <a href="/">
+        <img src={logo} alt="Logo - Coffee Delivery" />
+      </a>
       <div>
         <div>
           <GrLocation />
