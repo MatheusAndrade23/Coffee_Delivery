@@ -2,7 +2,7 @@ import { SuccessfulOrderContainer, Info, InfoTag } from './styles';
 
 import { BsClockFill } from 'react-icons/bs';
 import { IoLocationSharp } from 'react-icons/io5';
-import { FaMoneyBill, FaRegMoneyBillAlt } from 'react-icons/fa';
+import { FaMoneyBill, FaMoneyCheck } from 'react-icons/fa';
 
 import successfulOrderImage from '../../assets/successful-order-image.png';
 
