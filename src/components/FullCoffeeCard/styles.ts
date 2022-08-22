@@ -84,6 +84,11 @@ export const CoffeeSale = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: 0.25s;
+
+    &:hover {
+      background-color: ${({ theme }) => theme.colors['5-color']};
+    }
   }
 
   & > button svg {

@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components';
 
 export const SuccessfulOrderContainer = styled.section`
   width: 100%;
-  min-height: calc(100% - 10.4rem);
+  min-height: calc(100% - 20.4rem);
   display: flex;
   flex-flow: row wrap;
   align-items: center;

@@ -24,9 +24,14 @@ export const CoffeeAmountContainer = styled.div`
     border: none;
     width: 3rem;
     height: 3.2rem;
+    transition: 0.25s;
 
     & svg {
       font-size: 1.5rem;
+    }
+
+    &:hover {
+      color: ${({ theme }) => theme.colors['4-color']};
     }
   }
 `;

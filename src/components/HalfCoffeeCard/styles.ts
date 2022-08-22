@@ -5,11 +5,12 @@ export const HalfCoffeeCardContainer = styled.div`
   width: 36.8rem;
   padding: 0 0.8rem;
   background-color: ${({ theme }) => theme.colors['base-card']};
-  /* border-bottom: 1px solid ${({ theme }) => theme.colors['base-button']}; */
+  border-bottom: 1px solid ${({ theme }) => theme.colors['base-button']};
   display: flex;
   flex-direction: row;
   align-items: center;
-  /* padding-bottom: 3rem; */
+  padding-bottom: 4rem;
+  margin-top: 1rem;
 
   & img {
     width: 6.4rem;
@@ -59,6 +60,11 @@ export const Remove = styled.button`
   border-radius: 5px;
   margin-left: 1rem;
   border: none;
+  transition: 0.25s;
+
+  &:hover {
+    background-color: ${({ theme }) => theme.colors['base-hover']};
+  }
 
   & span {
     font-size: ${({ theme }) => theme.fonts.sizes.small2};
