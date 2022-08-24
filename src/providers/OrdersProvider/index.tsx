@@ -10,9 +10,9 @@ import { getNewOrderInfo } from '../../utils/get-new-order-info';
 
 export type CoffeeType = {
   title: string;
-  tags: string[] | null;
-  amount: number | null;
-  description: string | null;
+  tags: string[];
+  amount: number;
+  description: string;
   srcImg: string;
   price: string;
   id: string;
