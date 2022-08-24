@@ -10,7 +10,7 @@ export const HomeSection = styled.section`
   width: 100%;
   min-height: 54.4rem;
   display: flex;
-  /* flex-flow: row wrap; */
+  flex-flow: row wrap;
   align-items: center;
   justify-content: space-between;
 
@@ -21,8 +21,9 @@ export const HomeSection = styled.section`
 `;
 
 export const HomeInfo = styled.div`
-  height: 36rem;
-  max-width: calc(100% - 50rem);
+  min-height: 36rem;
+  width: 100%;
+  max-width: 60rem;
 
   & > div:first-child {
     display: flex;

@@ -10,13 +10,14 @@ export const CartInfoContainer = styled.div`
 
 export const CartList = styled.div`
   min-height: 49.8rem;
+  padding-bottom: 3rem;
   width: 44.8rem;
   border-radius: 5px 30px;
   background-color: ${({ theme }) => theme.colors['base-card']};
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: center;
 `;
 
 export const PriceInfo = styled.div`
@@ -26,7 +27,7 @@ export const PriceInfo = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  margin-top: 3rem;
+  margin: 3rem 0;
 `;
 
 export const PriceTag = styled.div`
@@ -118,7 +119,6 @@ export const CoffeesList = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-evenly;
 
   & > div {
     margin-top: 4rem;
