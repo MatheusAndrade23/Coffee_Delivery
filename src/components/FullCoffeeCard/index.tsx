@@ -18,10 +18,20 @@ interface FullCoffeeCardProps {
 }
 
 export const FullCoffeeCard = ({ coffee }: FullCoffeeCardProps) => {
-  const { title, tags, description, srcImg, price } = coffee;
-  const { addCoffeeToCart } = useContext(OrdersContext);
+  const { title, tags, description, srcImg, price, id } = coffee;
+  const { addCoffeeToCart, cart } = useContext(OrdersContext);
 
   const [coffeeAmount, setCoffeeAmount] = useState(0);
+
+  // const [coffeeAmount, setCoffeeAmount] = useState(() => {
+  //   const lastCoffeeAmount = cart.filter((coffee) => coffee.id == id);
+
+  //   if (lastCoffeeAmount.length === 0) {
+  //     return 0;
+  //   }
+
+  //   return lastCoffeeAmount[0].amount;
+  // });
 
   const isCoffeeSelected = coffeeAmount > 0;
   const buttonAddToCartIsDisabled = !isCoffeeSelected;
