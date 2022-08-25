@@ -18,10 +18,23 @@ export type CoffeeType = {
   id: string;
 };
 
+type OrderData = {
+  CEP: string;
+  street: string;
+  number: number;
+  complement: string;
+  district: string;
+  city: string;
+  estate: string;
+  paymentPreference: string;
+};
+
 interface OrderProps {
   totalPrice: number;
   order: CoffeeType[];
   date: string;
+  paymentPreference: string;
+  data: OrderData;
 }
 
 interface OrdersContextProps {
@@ -32,6 +45,7 @@ interface OrdersContextProps {
   totalPrice: number;
   addCoffeeToCart: (coffee: CoffeeType, amount: number) => void;
   removeCoffeeFromCart: (coffeeId: string) => void;
+  completeCurrentOrder: (orderData: OrderData) => void;
 }
 
 export const OrdersContext = createContext({} as OrdersContextProps);
@@ -71,6 +85,10 @@ export const OrdersProvider = ({ children }: OrdersContextProviderProps) => {
 
           return { orders, currentOrder: newCurrentOrder };
         }
+
+        case 'COMPLETE_CURRENT_ORDER':
+          console.log('jj');
+          return state;
 
         default:
           return state;
@@ -136,6 +154,16 @@ export const OrdersProvider = ({ children }: OrdersContextProviderProps) => {
     });
   };
 
+  const completeCurrentOrder = (orderData: OrderData) => {
+    dispatch({
+      type: 'COMPLETE_CURRENT_ORDER',
+      payload: {
+        cart,
+        ...orderData,
+      },
+    });
+  };
+
   return (
     <OrdersContext.Provider
       value={{
@@ -146,6 +174,7 @@ export const OrdersProvider = ({ children }: OrdersContextProviderProps) => {
         productsPrice,
         addCoffeeToCart,
         removeCoffeeFromCart,
+        completeCurrentOrder,
       }}
     >
       {children}

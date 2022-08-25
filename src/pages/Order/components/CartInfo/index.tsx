@@ -58,7 +58,11 @@ export const CartInfo = () => {
             </h5>
           </PriceTag>
         </PriceInfo>
-        <CompleteOrderButton disabled={isButtonDisabled}>
+        <CompleteOrderButton
+          disabled={isButtonDisabled}
+          type="submit"
+          form="completeOrderForm"
+        >
           Confirmar Pedido
         </CompleteOrderButton>
       </CartList>

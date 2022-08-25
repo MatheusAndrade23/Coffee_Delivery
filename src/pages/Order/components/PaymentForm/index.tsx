@@ -7,24 +7,38 @@ import {
   PaymentPreferenceButton,
 } from './styles';
 
+import { useFormContext } from 'react-hook-form';
+
 import { GrLocation } from 'react-icons/gr';
 import { MdAttachMoney } from 'react-icons/md';
 
 import { FaMoneyBill, FaMoneyCheck } from 'react-icons/fa';
 import { AiFillBank } from 'react-icons/ai';
-import { useState } from 'react';
 
-export const PaymentForm = () => {
-  const [paymentPreference, setPaymentPreference] = useState('');
+interface PaymentFormProps {
+  completeOrder: any;
+  handleSelectPaymentPreference: (newPaymentPreference: string) => void;
+  paymentPreference: string;
+}
 
-  const handleSelectPaymentPreference = (paymentPreference: string) => {
-    setPaymentPreference(paymentPreference);
+export const PaymentForm = ({
+  completeOrder,
+  handleSelectPaymentPreference,
+  paymentPreference,
+}: PaymentFormProps) => {
+  const { register, handleSubmit } = useFormContext();
+
+  const handleCompleteOrder = (data: any) => {
+    completeOrder(data);
   };
 
   return (
     <PaymentFormContainer>
       <h2>Complete seu pedido</h2>
-      <AddressForm>
+      <AddressForm
+        onSubmit={handleSubmit(handleCompleteOrder)}
+        id="completeOrderForm"
+      >
         <FormTitle>
           <GrLocation />
           <div>
@@ -32,16 +46,20 @@ export const PaymentForm = () => {
             <span>Informe o endereço onde deseja receber seu pedido</span>
           </div>
         </FormTitle>
-        <input type="text" placeholder="CEP" />
-        <input type="text" placeholder="Rua" />
+        <input type="text" placeholder="CEP" {...register('CEP')} />
+        <input type="text" placeholder="Rua" {...register('street')} />
         <InputContainer>
-          <input type="text" placeholder="Número" />
-          <input type="text" placeholder="Complemento" />
+          <input type="text" placeholder="Número" {...register('number')} />
+          <input
+            type="text"
+            placeholder="Complemento"
+            {...register('complement')}
+          />
         </InputContainer>
         <InputContainer>
-          <input type="text" placeholder="Bairro" />
-          <input type="text" placeholder="Cidade" />
-          <input type="text" placeholder="UF" />
+          <input type="text" placeholder="Bairro" {...register('district')} />
+          <input type="text" placeholder="Cidade" {...register('city')} />
+          <input type="text" placeholder="UF" {...register('estate')} />
         </InputContainer>
       </AddressForm>
       <PaymentPreference>

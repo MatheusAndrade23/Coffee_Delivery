@@ -24,7 +24,7 @@ export const AddressForm = styled.form`
     padding: 1rem;
     margin: 1rem 0;
     font-size: ${({ theme }) => theme.fonts.sizes.small3};
-    color: ${({ theme }) => theme.colors['base-label']};
+    color: ${({ theme }) => theme.colors['base-title']};
     background-color: ${({ theme }) => theme.colors['base-input']};
     border: 1px solid ${({ theme }) => theme.colors['base-button']};
 
@@ -38,7 +38,6 @@ export const InputContainer = styled.div`
   display: flex;
   flex-direction: row;
   width: 100%;
-
   & input:not(:first-child) {
     margin-left: 1.6rem;
   }
