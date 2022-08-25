@@ -19,9 +19,9 @@ export const Routes = () => {
       <Container>
         <Header />
         <Switch>
+          <Route path="/order/success" element={<SuccessfulOrder />} />
           <Route path="/order" element={<Order />} />
           <Route path="/" element={<Home />} />
-          <Route path="/order/success" element={<SuccessfulOrder />} />
         </Switch>
         <Footer />
       </Container>
