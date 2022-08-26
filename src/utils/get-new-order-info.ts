@@ -3,7 +3,10 @@ import { CoffeeType } from '../providers/OrdersProvider';
 export const getNewOrderInfo = (cart: CoffeeType[]) => {
   const productsPrice = cart.reduce(
     (previousValue: number, coffee: CoffeeType) => {
-      return previousValue + parseFloat(coffee.price.replace(',', '.'));
+      return (
+        previousValue +
+        parseFloat(coffee.price.replace(',', '.')) * coffee.amount
+      );
     },
     0,
   );
