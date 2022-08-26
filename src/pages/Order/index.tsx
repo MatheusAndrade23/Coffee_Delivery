@@ -13,19 +13,13 @@ import { OrdersContext } from '../../providers/OrdersProvider';
 import { toast } from 'react-toastify';
 
 const newCompleteOrderFormSchema = zod.object({
-  CEP: zod.string().regex(/^[0-9]{5}-[0-9]{3}$/, 'Digite um CEP válido'),
-  street: zod.string().min(1, 'Digite uma rua!'),
-  number: zod
-    .number()
-    .min(0, 'O número deve ser maior que 0 e menor que 999')
-    .max(999, 'O número deve ser maior que 0 e menor que 999'),
-  complement: zod
-    .string()
-    .min(20, 'O complemento deve ser maior que 20 caracteres!')
-    .max(60, 'O complemento deve ser menor que 60 caracteres!'),
-  district: zod.string().min(1, 'Digite seu bairro!'),
+  CEP: zod.string().regex(/^[0-9]{5}-[0-9]{3}$/),
+  road: zod.string().min(10),
+  number: zod.string().min(1).max(3),
+  complement: zod.string().min(20),
+  district: zod.string().min(10),
   city: zod.string().min(1),
-  estate: zod.string().max(2),
+  estate: zod.string().min(1).max(2),
 });
 
 export type NewCompleteOrderData = zod.infer<typeof newCompleteOrderFormSchema>;
@@ -42,8 +36,8 @@ export const Order = () => {
     resolver: zodResolver(newCompleteOrderFormSchema),
     defaultValues: {
       CEP: '',
-      street: '',
-      number: 0,
+      road: '',
+      number: '',
       complement: '',
       district: '',
       city: '',
@@ -51,14 +45,12 @@ export const Order = () => {
     },
   });
 
-  const {
-    reset,
-    formState: { errors },
-  } = newOrderForm;
+  const { reset } = newOrderForm;
 
-  if (errors) {
-    toast('s');
-  }
+  // if (Object.keys(errors).length > 0) {
+  //   const key = Object.keys(errors)[0];
+  //   toast.warning(errors[key].message);
+  // }
 
   const completeOrder = (data: NewCompleteOrderData) => {
     const newOrderData = { ...data, paymentPreference };

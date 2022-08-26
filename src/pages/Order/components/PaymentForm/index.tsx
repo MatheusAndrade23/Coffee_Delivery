@@ -5,6 +5,8 @@ import {
   InputContainer,
   PaymentPreference,
   PaymentPreferenceButton,
+  Validation,
+  FieldValidation,
 } from './styles';
 
 import { useFormContext } from 'react-hook-form';
@@ -13,7 +15,7 @@ import { GrLocation } from 'react-icons/gr';
 import { MdAttachMoney } from 'react-icons/md';
 
 import { FaMoneyBill, FaMoneyCheck } from 'react-icons/fa';
-import { AiFillBank } from 'react-icons/ai';
+import { AiFillBank, AiOutlineCheck, AiOutlineClose } from 'react-icons/ai';
 
 interface PaymentFormProps {
   completeOrder: any;
@@ -26,7 +28,19 @@ export const PaymentForm = ({
   handleSelectPaymentPreference,
   paymentPreference,
 }: PaymentFormProps) => {
-  const { register, handleSubmit } = useFormContext();
+  const { register, handleSubmit, watch } = useFormContext();
+
+  const cep = watch('CEP');
+  const road = watch('road');
+  const district = watch('district');
+  const complement = watch('complement');
+  const number = watch('number');
+
+  const isCepValid = /^[0-9]{5}-[0-9]{3}$/.test(cep);
+  const isRoadValid = road.length > 10;
+  const isDistrictValid = district.length > 10;
+  const isComplementValid = complement.length > 20;
+  const isNumberValid = number > 0 && number < 999;
 
   const handleCompleteOrder = (data: any) => {
     completeOrder(data);
@@ -47,7 +61,7 @@ export const PaymentForm = ({
           </div>
         </FormTitle>
         <input type="text" placeholder="CEP" {...register('CEP')} />
-        <input type="text" placeholder="Rua" {...register('street')} />
+        <input type="text" placeholder="Rua" {...register('road')} />
         <InputContainer>
           <input type="text" placeholder="Número" {...register('number')} />
           <input
@@ -61,7 +75,27 @@ export const PaymentForm = ({
           <input type="text" placeholder="Cidade" {...register('city')} />
           <input type="text" placeholder="UF" {...register('estate')} />
         </InputContainer>
+        <Validation>
+          <FieldValidation valid={isRoadValid}>
+            Rua com + de 10 caracteres {FieldValidationIcon(isRoadValid)}
+          </FieldValidation>
+          <FieldValidation valid={isNumberValid}>
+            Número entre 1 e 999 {FieldValidationIcon(isNumberValid)}
+          </FieldValidation>
+          <FieldValidation valid={isDistrictValid}>
+            Bairro com + de 10 caracteres {FieldValidationIcon(isDistrictValid)}
+          </FieldValidation>
+          <FieldValidation valid={isCepValid}>
+            CEP no formato: 0000-000 {FieldValidationIcon(isCepValid)}
+          </FieldValidation>
+
+          <FieldValidation valid={isComplementValid}>
+            Complemento com + de 20 caracteres{' '}
+            {FieldValidationIcon(isComplementValid)}
+          </FieldValidation>
+        </Validation>
       </AddressForm>
+
       <PaymentPreference>
         <FormTitle>
           <MdAttachMoney />
@@ -98,4 +132,11 @@ export const PaymentForm = ({
       </PaymentPreference>
     </PaymentFormContainer>
   );
+};
+
+const FieldValidationIcon = (validation: boolean) => {
+  if (validation) {
+    return <AiOutlineCheck />;
+  }
+  return <AiOutlineClose />;
 };

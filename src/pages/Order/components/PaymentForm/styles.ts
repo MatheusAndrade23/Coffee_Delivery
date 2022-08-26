@@ -1,4 +1,5 @@
-import styled, { css } from 'styled-components';
+import styled, { css, ThemedStyledProps, ThemeProps } from 'styled-components';
+import { ThemeType } from '../../../../@types/styled';
 
 export const PaymentFormContainer = styled.div`
   width: 64rem;
@@ -99,9 +100,15 @@ export const PaymentPreference = styled.div`
   }
 `;
 
-interface PaymentButtonProps {
+type PaymentButtonProps = {
   selected: boolean;
-}
+  theme: ThemeType;
+};
+
+type ValidFieldProps = {
+  valid: boolean;
+  theme: ThemeType;
+};
 
 export const PaymentPreferenceButton = styled.button`
   height: 5.1rem;
@@ -116,7 +123,8 @@ export const PaymentPreferenceButton = styled.button`
   text-transform: uppercase;
   transition: 0.25s;
 
-  ${({ selected }: PaymentButtonProps) => ButtonSelected(selected)};
+  ${({ selected, theme }: PaymentButtonProps) =>
+    ButtonSelected(selected, theme)};
 
   & svg {
     color: ${({ theme }) => theme.colors['5-color']};
@@ -129,7 +137,35 @@ export const PaymentPreferenceButton = styled.button`
   }
 `;
 
-const ButtonSelected = (selected: boolean) => css`
+const ButtonSelected = (selected: boolean, theme: ThemeType) => css`
   border: ${selected ? '1px solid' : 'none'};
-  border-color: ${({ selected, theme }) => selected && theme.colors['5-color']};
+  border-color: ${selected && theme.colors['5-color']};
+`;
+
+export const Validation = styled.div`
+  width: 100%;
+  display: flex;
+  flex-flow: row wrap;
+  font-size: ${({ theme }) => theme.fonts.sizes.small3};
+  justify-content: space-between;
+  margin-top: 10px;
+`;
+
+export const FieldValidation = styled.p`
+  width: max-content;
+  min-width: 50%;
+  margin: 5px 0;
+  display: flex;
+  align-items: center;
+  text-align: justify;
+
+  ${({ theme, valid }: ValidFieldProps) => FieldValid(valid, theme)}
+
+  & svg {
+    margin-left: 10px;
+  }
+`;
+
+const FieldValid = (valid: boolean, theme: ThemeType) => css`
+  color: ${valid ? theme.colors['green-color'] : theme.colors['red-color']};
 `;

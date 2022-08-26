@@ -20,8 +20,8 @@ export type CoffeeType = {
 
 type OrderData = {
   CEP: string;
-  street: string;
-  number: number;
+  road: string;
+  number: string;
   complement: string;
   district: string;
   city: string;
