@@ -13,10 +13,19 @@ export const HomeSection = styled.section`
   flex-flow: row wrap;
   align-items: center;
   justify-content: space-between;
+  margin-bottom: 30px;
 
   & img {
     width: 47.6rem;
-    height: 36rem;
+    /* height: 36rem; */
+  }
+
+  @media (max-width: 1215px) {
+    justify-content: center;
+
+    & img {
+      width: 90%;
+    }
   }
 `;
 
@@ -35,6 +44,10 @@ export const HomeInfo = styled.div`
       font-size: ${({ theme }) => theme.fonts.sizes.xxhuge};
       width: 100%;
       line-height: 130%;
+
+      @media (max-width: 600px) {
+        font-size: ${({ theme }) => theme.fonts.sizes.xhuge};
+      }
     }
 
     & p {
@@ -43,6 +56,11 @@ export const HomeInfo = styled.div`
       font-size: ${({ theme }) => theme.fonts.sizes.medium2};
     }
   }
+
+  @media (max-width: 1215px) {
+    width: 80%;
+    text-align: center;
+  }
 `;
 
 export const Advantages = styled.div`
@@ -50,12 +68,15 @@ export const Advantages = styled.div`
   width: 100%;
   display: flex;
   flex-flow: row wrap;
+  justify-content: center;
+  margin-bottom: 40px;
 
   & div {
     width: 50%;
     display: flex;
     align-items: center;
     margin-top: 2rem;
+    min-width: 290px;
 
     & span {
       font-size: ${({ theme }) => theme.fonts.sizes.small4};
@@ -102,6 +123,10 @@ export const CoffeesSection = styled.section`
 
     & > div {
       margin: 2rem 0;
+    }
+
+    @media (max-width: 600px) {
+      justify-content: center;
     }
   }
 `;
