@@ -14,6 +14,10 @@ import { useFormContext } from 'react-hook-form';
 import { GrLocation } from 'react-icons/gr';
 import { MdAttachMoney } from 'react-icons/md';
 
+import { useState } from 'react';
+
+import { db } from '../../../../services/api';
+
 import { FaMoneyBill, FaMoneyCheck } from 'react-icons/fa';
 import { AiFillBank, AiOutlineCheck, AiOutlineClose } from 'react-icons/ai';
 
@@ -28,7 +32,10 @@ export const PaymentForm = ({
   handleSelectPaymentPreference,
   paymentPreference,
 }: PaymentFormProps) => {
+  const [cepInfo, setCepInfo] = useState({ estate: '', city: '' });
   const { register, handleSubmit, watch } = useFormContext();
+
+  const { estate, city } = cepInfo;
 
   const cep = watch('CEP');
   const road = watch('road');
@@ -40,11 +47,22 @@ export const PaymentForm = ({
   const isRoadValid = road.length > 10;
   const isDistrictValid = district.length > 10;
   const isComplementValid = complement.length > 20;
-  const isNumberValid = number > 0 && number < 999;
+  const isNumberValid = parseInt(number) > 0 && parseInt(number) <= 999;
 
   const handleCompleteOrder = (data: any) => {
     completeOrder(data);
   };
+
+  const getCepInfo = async () => {
+    if (isCepValid) {
+      const resp = await db.get(`/${cep}/json`);
+
+      const newCepInfo = { estate: resp.data.uf, city: resp.data.localidade };
+      setCepInfo(newCepInfo);
+    }
+  };
+
+  getCepInfo();
 
   return (
     <PaymentFormContainer>
@@ -63,7 +81,7 @@ export const PaymentForm = ({
         <input type="text" placeholder="CEP" {...register('CEP')} />
         <input type="text" placeholder="Rua" {...register('road')} />
         <InputContainer>
-          <input type="text" placeholder="Número" {...register('number')} />
+          <input type="number" placeholder="Número" {...register('number')} />
           <input
             type="text"
             placeholder="Complemento"
@@ -72,8 +90,20 @@ export const PaymentForm = ({
         </InputContainer>
         <InputContainer>
           <input type="text" placeholder="Bairro" {...register('district')} />
-          <input type="text" placeholder="Cidade" {...register('city')} />
-          <input type="text" placeholder="UF" {...register('estate')} />
+          <input
+            type="text"
+            placeholder="Cidade"
+            {...register('city')}
+            disabled={true}
+            value={city}
+          />
+          <input
+            type="text"
+            placeholder="UF"
+            {...register('estate')}
+            disabled={true}
+            value={estate}
+          />
         </InputContainer>
         <Validation>
           <FieldValidation valid={isRoadValid}>
@@ -88,7 +118,6 @@ export const PaymentForm = ({
           <FieldValidation valid={isCepValid}>
             CEP no formato: 0000-000 {FieldValidationIcon(isCepValid)}
           </FieldValidation>
-
           <FieldValidation valid={isComplementValid}>
             Complemento com + de 20 caracteres{' '}
             {FieldValidationIcon(isComplementValid)}

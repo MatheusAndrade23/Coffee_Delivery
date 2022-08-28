@@ -32,6 +32,10 @@ export const AddressForm = styled.form`
     &:focus {
       border-color: ${({ theme }) => theme.colors['1-color']};
     }
+
+    &:disabled:hover {
+      cursor: not-allowed;
+    }
   }
 `;
 
@@ -159,13 +163,13 @@ export const FieldValidation = styled.p`
   align-items: center;
   text-align: justify;
 
-  ${({ theme, valid }: ValidFieldProps) => FieldValid(valid, theme)}
+  ${({ theme, valid }: ValidFieldProps) => isFieldValidColor(valid, theme)}
 
   & svg {
     margin-left: 10px;
   }
 `;
 
-const FieldValid = (valid: boolean, theme: ThemeType) => css`
+const isFieldValidColor = (valid: boolean, theme: ThemeType) => css`
   color: ${valid ? theme.colors['green-color'] : theme.colors['red-color']};
 `;
