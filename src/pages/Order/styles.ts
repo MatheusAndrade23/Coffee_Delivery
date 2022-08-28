@@ -7,4 +7,8 @@ export const OrderContainer = styled.main`
   align-items: flex-start;
   width: 100%;
   margin-bottom: 3rem;
+
+  @media (max-width: 1223px) {
+    justify-content: center;
+  }
 `;

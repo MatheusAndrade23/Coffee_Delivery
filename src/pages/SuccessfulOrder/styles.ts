@@ -9,8 +9,13 @@ export const SuccessfulOrderContainer = styled.section`
   justify-content: space-between;
 
   & img {
-    height: 29.3rem;
-    width: 49.2rem;
+    max-width: 49.2rem;
+    width: 100%;
+  }
+
+  @media (max-width: 1550px) {
+    justify-content: center;
+    min-height: calc(100% - 35.4rem);
   }
 `;
 
@@ -28,7 +33,7 @@ export const Info = styled.div`
   }
 
   & > div {
-    width: 52.6rem;
+    width: 100%;
     height: 27rem;
     display: flex;
     flex-direction: column;
@@ -57,6 +62,11 @@ export const Info = styled.div`
 
   & div:nth-child(2) svg {
     background-color: ${({ theme }) => theme.colors['2-color']};
+  }
+
+  @media (max-width: 1550px) {
+    margin: 0;
+    height: max-content;
   }
 `;
 

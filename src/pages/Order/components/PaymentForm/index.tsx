@@ -14,7 +14,7 @@ import { useFormContext } from 'react-hook-form';
 import { GrLocation } from 'react-icons/gr';
 import { MdAttachMoney } from 'react-icons/md';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import { db } from '../../../../services/api';
 
@@ -33,7 +33,7 @@ export const PaymentForm = ({
   paymentPreference,
 }: PaymentFormProps) => {
   const [cepInfo, setCepInfo] = useState({ estate: '', city: '' });
-  const { register, handleSubmit, watch } = useFormContext();
+  const { register, handleSubmit, watch, formState } = useFormContext();
 
   const { estate, city } = cepInfo;
 
@@ -50,19 +50,24 @@ export const PaymentForm = ({
   const isNumberValid = parseInt(number) > 0 && parseInt(number) <= 999;
 
   const handleCompleteOrder = (data: any) => {
-    completeOrder(data);
+    const orderData = { ...data, ...cepInfo };
+    completeOrder(orderData);
   };
 
-  const getCepInfo = async () => {
-    if (isCepValid) {
-      const resp = await db.get(`/${cep}/json`);
+  useEffect(() => {
+    const getCepInfo = async () => {
+      if (isCepValid) {
+        const resp = await db.get(`/${cep}/json`);
 
-      const newCepInfo = { estate: resp.data.uf, city: resp.data.localidade };
-      setCepInfo(newCepInfo);
-    }
-  };
+        const newCepInfo = { estate: resp.data.uf, city: resp.data.localidade };
+        setCepInfo(newCepInfo);
+      } else if (cep !== '') {
+        setCepInfo({ estate: '', city: '' });
+      }
+    };
 
-  getCepInfo();
+    getCepInfo();
+  }, [watch('CEP')]);
 
   return (
     <PaymentFormContainer>
@@ -124,7 +129,6 @@ export const PaymentForm = ({
           </FieldValidation>
         </Validation>
       </AddressForm>
-
       <PaymentPreference>
         <FormTitle>
           <MdAttachMoney />

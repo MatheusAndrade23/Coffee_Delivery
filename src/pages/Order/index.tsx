@@ -18,8 +18,8 @@ const newCompleteOrderFormSchema = zod.object({
   number: zod.string().min(1).max(3),
   complement: zod.string().min(20),
   district: zod.string().min(10),
-  city: zod.string().min(1),
-  estate: zod.string().min(1).max(2),
+  city: zod.string(),
+  estate: zod.string(),
 });
 
 export type NewCompleteOrderData = zod.infer<typeof newCompleteOrderFormSchema>;

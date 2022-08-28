@@ -5,6 +5,7 @@ import {
   useReducer,
   useState,
 } from 'react';
+import { toast } from 'react-toastify';
 
 import { getNewOrderInfo } from '../../utils/get-new-order-info';
 
@@ -31,10 +32,14 @@ type OrderData = {
 
 interface OrderProps {
   totalPrice: number;
-  order: CoffeeType[];
+  cart: CoffeeType[];
   date: string;
   paymentPreference: string;
-  data: OrderData;
+  road: string;
+  number: string;
+  city: string;
+  estate: string;
+  district: string;
 }
 
 interface OrdersContextProps {
@@ -69,7 +74,7 @@ export const OrdersProvider = ({ children }: OrdersContextProviderProps) => {
           newCart.push(action.payload);
 
           const newCurrentOrder = getNewOrderInfo(newCart);
-
+          toast.success('Café adicionado ao carrinho com sucesso!');
           return { orders, currentOrder: newCurrentOrder };
         }
 
@@ -82,13 +87,28 @@ export const OrdersProvider = ({ children }: OrdersContextProviderProps) => {
           });
 
           const newCurrentOrder = getNewOrderInfo(newCart);
-
+          toast.success('Café removido do carrinho com sucesso!');
           return { orders, currentOrder: newCurrentOrder };
         }
 
         case 'COMPLETE_CURRENT_ORDER':
-          console.log('jj');
-          return state;
+          const { orders, currentOrder } = state;
+          const { cart } = currentOrder;
+          const newCompleteOrder = {
+            cart: cart,
+            ...action.payload.orderData,
+            totalPrice: cart.totalPrice,
+          };
+          toast.success('Pedido completado com sucesso!');
+          return {
+            orders: [...orders, newCompleteOrder],
+            currentOrder: {
+              cart: [],
+              totalPrice: 0,
+              deliveryPrice: 0,
+              productsPrice: 0,
+            },
+          };
 
         default:
           return state;
@@ -159,7 +179,7 @@ export const OrdersProvider = ({ children }: OrdersContextProviderProps) => {
       type: 'COMPLETE_CURRENT_ORDER',
       payload: {
         cart,
-        ...orderData,
+        orderData: { ...orderData },
       },
     });
   };

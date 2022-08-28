@@ -6,12 +6,18 @@ export const CartInfoContainer = styled.div`
     font-size: ${({ theme }) => theme.fonts.sizes.medium};
     margin: 1rem;
   }
+
+  width: 44.8rem;
+
+  @media (max-width: 700px) {
+    width: 100%;
+  }
 `;
 
 export const CartList = styled.div`
   min-height: 49.8rem;
   padding-bottom: 3rem;
-  width: 44.8rem;
+  width: 100%;
   border-radius: 5px 30px;
   background-color: ${({ theme }) => theme.colors['base-card']};
   display: flex;
@@ -22,7 +28,8 @@ export const CartList = styled.div`
 
 export const PriceInfo = styled.div`
   height: 9.2rem;
-  width: 36.8rem;
+  max-width: 36.8rem;
+  width: 80%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -59,7 +66,8 @@ export const CompleteOrderButton = styled.button`
   font-weight: bold;
   border: none;
   border-radius: 5px;
-  width: 36.8rem;
+  max-width: 36.8rem;
+  width: 80%;
   height: 4.6rem;
   color: ${({ theme }) => theme.colors['base-light-color']};
   background-color: ${({ theme }) => theme.colors['2-color']};
@@ -75,7 +83,8 @@ export const CompleteOrderButton = styled.button`
 `;
 
 export const CartEmptyMessage = styled.div`
-  width: 36.8rem;
+  max-width: 36.8rem;
+  width: 80%;
   height: 16rem;
   display: flex;
   flex-direction: column;
@@ -85,6 +94,7 @@ export const CartEmptyMessage = styled.div`
   border: double 1px transparent;
   border-image-slice: 1;
   border-radius: 10px;
+  text-align: center;
   background-image: linear-gradient(
       ${({ theme }) => theme.colors['base-card']},
       ${({ theme }) => theme.colors['base-card']}
@@ -107,6 +117,7 @@ export const CartEmptyMessage = styled.div`
     color: ${({ theme }) => theme.colors['5-color']};
     text-decoration: underline;
     font-size: ${({ theme }) => theme.fonts.sizes.small3};
+    width: 90%;
 
     &:hover {
       color: ${({ theme }) => theme.colors['4-color']};

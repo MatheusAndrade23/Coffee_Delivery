@@ -9,6 +9,10 @@ export const PaymentFormContainer = styled.div`
     font-size: ${({ theme }) => theme.fonts.sizes.medium};
     margin: 1rem;
   }
+
+  @media (max-width: 680px) {
+    width: 100%;
+  }
 `;
 
 export const AddressForm = styled.form`
@@ -44,15 +48,19 @@ export const InputContainer = styled.div`
   flex-direction: row;
   width: 100%;
   & input:not(:first-child) {
-    margin-left: 1.6rem;
+    margin-left: 1rem;
+  }
+
+  & input:first-child {
+    width: 25%;
   }
 
   & input:nth-child(2) {
-    width: 80%;
+    width: 75%;
   }
 
   & input:nth-child(3) {
-    width: 15%;
+    width: 20%;
   }
 `;
 
@@ -98,9 +106,10 @@ export const PaymentPreference = styled.div`
   background-color: ${({ theme }) => theme.colors['base-card']};
 
   & > div:nth-child(2) {
+    width: 100%;
     display: flex;
-    flex-direction: row wrap;
-    justify-content: space-between;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
   }
 `;
 
@@ -116,7 +125,8 @@ type ValidFieldProps = {
 
 export const PaymentPreferenceButton = styled.button`
   height: 5.1rem;
-  width: 18rem;
+  margin: 5px;
+  min-width: 18rem;
   border-radius: 5px;
   border: none;
   display: flex;
@@ -153,6 +163,10 @@ export const Validation = styled.div`
   font-size: ${({ theme }) => theme.fonts.sizes.small3};
   justify-content: space-between;
   margin-top: 10px;
+
+  @media (max-width: 680px) {
+    justify-content: center;
+  }
 `;
 
 export const FieldValidation = styled.p`

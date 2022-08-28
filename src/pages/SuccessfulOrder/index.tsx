@@ -4,9 +4,18 @@ import { BsClockFill } from 'react-icons/bs';
 import { IoLocationSharp } from 'react-icons/io5';
 import { FaMoneyBill, FaMoneyCheck } from 'react-icons/fa';
 
+import { useContext } from 'react';
+
+import { OrdersContext } from '../../providers/OrdersProvider';
+
 import successfulOrderImage from '../../assets/successful-order-image.png';
 
 export const SuccessfulOrder = () => {
+  const { orders } = useContext(OrdersContext);
+  const lastPosition = orders.length - 1;
+
+  const { district, city, estate, road, number } = orders[lastPosition];
+
   return (
     <SuccessfulOrderContainer>
       <Info>
@@ -17,9 +26,9 @@ export const SuccessfulOrder = () => {
             <IoLocationSharp />
             <div>
               <p>
-                Entrega em <span>Rua João Daniel Martinelli, 102</span>
+                Entrega em <span>{`${road}, ${number}`}</span>
               </p>
-              <p>Farrapos - Porto Alegre, RS</p>
+              <p>{`${district} - ${city}, ${estate}`}</p>
             </div>
           </InfoTag>
           <InfoTag>
