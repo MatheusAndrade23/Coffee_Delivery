@@ -4,25 +4,25 @@
  <img src="./src/assets/homeImage.png" width="400px" alt="Home Image"/>
 </div>
 
-<h3 align="center">É um site de delivery de cafés desenvolvido com React e Typescript para a trilha de React do Ignite, da Rocketseat.</h3>
+<h3 align="center">Um site de delivery de cafés desenvolvido com React + Typescript para a trilha de React do Ignite, Rocketseat.</h3>
 
 ---
 
 <h2>Demonstração 🎥</h2>
 
-<h3>Um pequeno tour pelo Projeto 💻</h3>
+_<h3>Um pequeno tour pelo Projeto 💻</h3>_
 
 <img src='./github/tour.gif' alt='Tour GIF'/>
 
-<h3>Adicionando e removendo cafés do carrinho 🛒</h3>
+_<h3>Adicionando e removendo cafés do carrinho 🛒</h3>_
 
 <img src='./github/carrinho.gif' alt='Tour GIF'/>
 
-<h3>Completando Pedidos 📦</h3>
+_<h3>Completando Pedidos 📦</h3>_
 
 <img src='./github/completando_pedido.gif' alt='Tour GIF'/>
 
-<h3>Vendo o Histórico 📄</h3>
+_<h3>Vendo o Histórico 📄</h3>_
 
 <img src='./github/historico.gif' alt='Tour GIF'/>
 
