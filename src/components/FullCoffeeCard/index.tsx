@@ -71,7 +71,15 @@ export const FullCoffeeCard = ({ coffee }: FullCoffeeCardProps) => {
           addOne={addOne}
           removeOne={removeOne}
         />
-        <button onClick={handleAddToCart} disabled={buttonAddToCartIsDisabled}>
+        <button
+          onClick={handleAddToCart}
+          disabled={buttonAddToCartIsDisabled}
+          title={
+            buttonAddToCartIsDisabled
+              ? 'Selecione uma quantidade para adicionar ao carrinho'
+              : 'Adicionar ao carrinho'
+          }
+        >
           <IoMdCart />
         </button>
       </CoffeeSale>

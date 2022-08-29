@@ -25,11 +25,11 @@ export const Header = () => {
           <GrLocation />
           <span>Minas Gerais, BR</span>
         </div>
-        <a href="/order">
+        <a href="/order" title="Acessar o Carrinho">
           <IoIosCart />
           {!isCartEmpty && <span>{cart.length}</span>}
         </a>
-        <a href="history">
+        <a href="history" title="Acessar o histórico">
           <ImHistory />
         </a>
       </div>

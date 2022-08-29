@@ -119,7 +119,7 @@ export const CoffeesSection = styled.section`
     margin-top: 2rem;
     display: flex;
     flex-flow: row wrap;
-    justify-content: space-between;
+    justify-content: space-evenly;
 
     & > div {
       margin: 2rem 0;

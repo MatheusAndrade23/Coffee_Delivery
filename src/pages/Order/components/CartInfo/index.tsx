@@ -60,6 +60,11 @@ export const CartInfo = () => {
         </PriceInfo>
         <CompleteOrderButton
           disabled={isButtonDisabled}
+          title={
+            isButtonDisabled
+              ? 'Adicione um café ao carrinho antes de completar o pedido'
+              : 'Completar o pedido'
+          }
           type="submit"
           form="completeOrderForm"
         >

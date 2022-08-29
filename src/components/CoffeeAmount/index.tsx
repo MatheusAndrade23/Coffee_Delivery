@@ -23,11 +23,11 @@ export const CoffeeAmount = ({
 
   return (
     <CoffeeAmountContainer>
-      <button onClick={handleRemoveOne}>
+      <button onClick={handleRemoveOne} title="Remover 1">
         <AiOutlineMinus />
       </button>
       <span>{amount}</span>
-      <button onClick={handleAddOne}>
+      <button onClick={handleAddOne} title="Adicionar 1">
         <AiOutlinePlus />
       </button>
     </CoffeeAmountContainer>
