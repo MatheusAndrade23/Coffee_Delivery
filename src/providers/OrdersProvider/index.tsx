@@ -104,9 +104,7 @@ export const OrdersProvider = ({ children }: OrdersContextProviderProps) => {
             ...action.payload.orderData,
           };
 
-          console.log(newCompleteOrder);
-
-          // window.location.href = '/order/success';
+          window.location.href = '/order/success';
           return {
             orders: [...orders, newCompleteOrder],
             currentOrder: {
@@ -183,15 +181,11 @@ export const OrdersProvider = ({ children }: OrdersContextProviderProps) => {
   const { cart, totalPrice, deliveryPrice, productsPrice } = currentOrder;
 
   const addCoffeeToCart = (coffee: CoffeeType, amount: number) => {
-    const { title, srcImg, price, id } = coffee;
     dispatch({
       type: 'ADD_COFFEE_TO_CART',
       payload: {
-        id,
-        title,
+        ...coffee,
         amount,
-        price,
-        srcImg,
       },
     });
   };
@@ -210,7 +204,7 @@ export const OrdersProvider = ({ children }: OrdersContextProviderProps) => {
       type: 'COMPLETE_CURRENT_ORDER',
       payload: {
         cart,
-        orderData: { ...orderData },
+        orderData,
       },
     });
   };
