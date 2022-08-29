@@ -30,32 +30,6 @@ _<h3>Vendo o Histórico 📄</h3>_
 
 ---
 
-<h2>Tecnologias Utilizadas 🛠</h2>
-
-#### FrontEnd: `ReactJS!`
-
-- Axios
-- React Icons
-- React Toastify
-- React Hook Form
-- Zod Resolver
-- Typescript
-- Context API
-- Uuidv4
-- Date-fns
-- React Router Dom
-
-<div style="display: inline_block"><br>
-  <img align="center" alt="npm" height="35" width="45" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/npm/npm-original-wordmark.svg" />
-  <img align="center" alt="Js" height="35" width="45"  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-plain.svg">
-  <img align="center" alt="Ts" height="35" width="45" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-plain.svg">
-  <img align="center" alt="React" height="35" width="45" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg">
- </div>
-
-<br>
-
----
-
 <h2>Fui além do desafio! 🚀</h2>
 
 <br>
@@ -79,6 +53,32 @@ _<h3>Vendo o Histórico 📄</h3>_
 - Aprendi a utilizar o `React Hook Form e Zod` para os formulários
 - Aprendi a usar o `Date-Fns` para manipular datas
 - Aprendi a criar `variáveis auxiliares` para deixar o `código mais limpo e legível`
+
+<br>
+
+---
+
+<h2>Tecnologias Utilizadas 🛠</h2>
+
+#### FrontEnd: `ReactJS!`
+
+- Axios
+- React Icons
+- React Toastify
+- React Hook Form
+- Zod Resolver
+- Typescript
+- Context API
+- Uuidv4
+- Date-fns
+- React Router Dom
+
+<div style="display: inline_block"><br>
+  <img align="center" alt="npm" height="35" width="45" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/npm/npm-original-wordmark.svg" />
+  <img align="center" alt="Js" height="35" width="45"  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-plain.svg">
+  <img align="center" alt="Ts" height="35" width="45" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-plain.svg">
+  <img align="center" alt="React" height="35" width="45" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg">
+ </div>
 
 <br>
 
