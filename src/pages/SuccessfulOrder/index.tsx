@@ -23,18 +23,11 @@ export const SuccessfulOrder = () => {
   const { orders } = useContext(OrdersContext);
   const lastPosition = orders.length - 1;
 
-  const { district, city, estate, road, number, paymentPreference, cart } =
-    orders[lastPosition];
-
-  const translatedPaymentPreference = getPaymentPreference(paymentPreference);
-
-  if (cart.length > 0) {
-    toast.success('Pedido completado com sucesso!');
-  }
+  toast.success('Pedido completado com sucesso!');
 
   return (
     <SuccessfulOrderContainer>
-      {cart.length === 0 ? (
+      {orders.length == 0 ? (
         <NoCompleteOrderMessage>
           <h2>Você ainda não completou nenhum pedido!</h2>
         </NoCompleteOrderMessage>
@@ -48,9 +41,10 @@ export const SuccessfulOrder = () => {
                 <IoLocationSharp />
                 <div>
                   <p>
-                    Entrega em <span>{`${road}, ${number}`}</span>
+                    Entrega em{' '}
+                    <span>{`${orders[lastPosition].road}, ${orders[lastPosition].number}`}</span>
                   </p>
-                  <p>{`${district} - ${city}, ${estate}`}</p>
+                  <p>{`${orders[lastPosition].district} - ${orders[lastPosition].city}, ${orders[lastPosition].estate}`}</p>
                 </div>
               </InfoTag>
               <InfoTag>
@@ -61,16 +55,22 @@ export const SuccessfulOrder = () => {
                 </div>
               </InfoTag>
               <InfoTag>
-                {translatedPaymentPreference === 'Dinheiro' && <FaMoneyBill />}
-                {translatedPaymentPreference === 'Cartão de Crédito' && (
-                  <FaMoneyCheck />
-                )}
-                {translatedPaymentPreference === 'Cartão de Débito' && (
-                  <AiFillBank />
-                )}
+                {getPaymentPreference(
+                  orders[lastPosition].paymentPreference,
+                ) === 'Dinheiro' && <FaMoneyBill />}
+                {getPaymentPreference(
+                  orders[lastPosition].paymentPreference,
+                ) === 'Cartão de Crédito' && <FaMoneyCheck />}
+                {getPaymentPreference(
+                  orders[lastPosition].paymentPreference,
+                ) === 'Cartão de Débito' && <AiFillBank />}
                 <div>
                   <p>Pagamento na entrega</p>
-                  <span>{translatedPaymentPreference}</span>
+                  <span>
+                    {getPaymentPreference(
+                      orders[lastPosition].paymentPreference,
+                    )}
+                  </span>
                 </div>
               </InfoTag>
             </div>

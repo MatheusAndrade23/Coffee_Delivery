@@ -10,13 +10,10 @@ import { NoCompleteOrderMessage } from '../SuccessfulOrder/styles';
 
 export const History = () => {
   const { orders } = useContext(OrdersContext);
-  const lastPosition = orders.length - 1;
-
-  const { cart } = orders[lastPosition];
 
   return (
     <HistoryContainer>
-      {cart.length == 0 ? (
+      {orders.length == 0 ? (
         <NoCompleteOrderMessage>
           <h2>Você ainda não completou nenhum pedido!</h2>
         </NoCompleteOrderMessage>

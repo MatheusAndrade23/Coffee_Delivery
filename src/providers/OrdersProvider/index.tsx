@@ -122,19 +122,7 @@ export const OrdersProvider = ({ children }: OrdersContextProviderProps) => {
     {
       orders: [],
       currentOrder: {
-        cart: [
-          {
-            totalPrice: 0,
-            cart: [],
-            date: '',
-            paymentPreference: '',
-            road: '',
-            number: '',
-            city: '',
-            estate: '',
-            district: '',
-          },
-        ],
+        cart: [],
         totalPrice: 0,
         deliveryPrice: 0,
         productsPrice: 0,
@@ -148,19 +136,7 @@ export const OrdersProvider = ({ children }: OrdersContextProviderProps) => {
       }
 
       return {
-        orders: [
-          {
-            totalPrice: 0,
-            cart: [],
-            date: '',
-            paymentPreference: '',
-            road: '',
-            number: '',
-            city: '',
-            estate: '',
-            district: '',
-          },
-        ],
+        orders: [],
         currentOrder: {
           cart: [],
           totalPrice: 0,
