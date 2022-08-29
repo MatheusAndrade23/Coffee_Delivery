@@ -13,7 +13,7 @@ export const HeaderContainer = styled.header`
     align-items: center;
     justify-content: space-between;
     height: 3.8rem;
-    width: 19.3rem;
+    width: 23.3rem;
 
     & div {
       width: 14.3rem;

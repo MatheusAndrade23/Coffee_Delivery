@@ -105,3 +105,17 @@ export const InfoTag = styled.div`
     color: ${({ theme }) => theme.colors['base-light-color']};
   }
 `;
+
+export const NoCompleteOrderMessage = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 30rem;
+  text-align: center;
+
+  & h2 {
+    color: ${({ theme }) => theme.colors['1-color']};
+    font-size: ${({ theme }) => theme.fonts.sizes.huge};
+  }
+`;

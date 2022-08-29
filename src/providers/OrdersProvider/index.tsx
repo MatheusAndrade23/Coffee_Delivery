@@ -27,6 +27,8 @@ type OrderData = {
   district: string;
   city: string;
   estate: string;
+  date: string;
+  id: string;
   paymentPreference: string;
 };
 
@@ -39,6 +41,7 @@ interface OrderProps {
   number: string;
   city: string;
   estate: string;
+  id: string;
   district: string;
 }
 
@@ -93,13 +96,17 @@ export const OrdersProvider = ({ children }: OrdersContextProviderProps) => {
 
         case 'COMPLETE_CURRENT_ORDER':
           const { orders, currentOrder } = state;
-          const { cart } = currentOrder;
+          const { cart, totalPrice } = currentOrder;
+
           const newCompleteOrder = {
-            cart: cart,
+            cart,
+            totalPrice,
             ...action.payload.orderData,
-            totalPrice: cart.totalPrice,
           };
-          toast.success('Pedido completado com sucesso!');
+
+          console.log(newCompleteOrder);
+
+          // window.location.href = '/order/success';
           return {
             orders: [...orders, newCompleteOrder],
             currentOrder: {
@@ -117,7 +124,19 @@ export const OrdersProvider = ({ children }: OrdersContextProviderProps) => {
     {
       orders: [],
       currentOrder: {
-        cart: [],
+        cart: [
+          {
+            totalPrice: 0,
+            cart: [],
+            date: '',
+            paymentPreference: '',
+            road: '',
+            number: '',
+            city: '',
+            estate: '',
+            district: '',
+          },
+        ],
         totalPrice: 0,
         deliveryPrice: 0,
         productsPrice: 0,
@@ -131,7 +150,19 @@ export const OrdersProvider = ({ children }: OrdersContextProviderProps) => {
       }
 
       return {
-        orders: [],
+        orders: [
+          {
+            totalPrice: 0,
+            cart: [],
+            date: '',
+            paymentPreference: '',
+            road: '',
+            number: '',
+            city: '',
+            estate: '',
+            district: '',
+          },
+        ],
         currentOrder: {
           cart: [],
           totalPrice: 0,

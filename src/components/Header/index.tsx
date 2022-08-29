@@ -7,6 +7,8 @@ import { OrdersContext } from '../../providers/OrdersProvider';
 import { GrLocation } from 'react-icons/gr';
 import { IoIosCart } from 'react-icons/io';
 
+import { ImHistory } from 'react-icons/im';
+
 import logo from '../../assets/logo.png';
 
 export const Header = () => {
@@ -26,6 +28,9 @@ export const Header = () => {
         <a href="/order">
           <IoIosCart />
           {!isCartEmpty && <span>{cart.length}</span>}
+        </a>
+        <a href="history">
+          <ImHistory />
         </a>
       </div>
     </HeaderContainer>

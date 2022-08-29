@@ -61,7 +61,7 @@ export const PaymentForm = ({
 
         const newCepInfo = { estate: resp.data.uf, city: resp.data.localidade };
         setCepInfo(newCepInfo);
-      } else if (cep !== '') {
+      } else {
         setCepInfo({ estate: '', city: '' });
       }
     };

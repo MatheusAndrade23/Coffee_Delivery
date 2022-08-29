@@ -1,6 +1,11 @@
 import { OrderContainer } from './styles';
 
 import { useState, useContext } from 'react';
+import { format } from 'date-fns';
+
+import { ptBR } from 'date-fns/locale';
+
+import { v4 as uuid } from 'uuid';
 
 import { FormProvider, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -53,7 +58,12 @@ export const Order = () => {
   // }
 
   const completeOrder = (data: NewCompleteOrderData) => {
-    const newOrderData = { ...data, paymentPreference };
+    const newOrderData = {
+      ...data,
+      paymentPreference,
+      date: format(new Date(), 'dd/MM/yyyy', { locale: ptBR }),
+      id: uuid(),
+    };
 
     if (paymentPreference.length === 0) {
       toast.warning('Selecione um meio de pagamento!');

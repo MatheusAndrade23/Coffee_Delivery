@@ -6,6 +6,7 @@ import {
 
 import { Home } from './pages/Home';
 import { Order } from './pages/Order';
+import { History } from './pages/History';
 import { SuccessfulOrder } from './pages/SuccessfulOrder';
 
 import { Header } from './components/Header';
@@ -20,6 +21,7 @@ export const Routes = () => {
         <Header />
         <Switch>
           <Route path="/order/success" element={<SuccessfulOrder />} />
+          <Route path="/history" element={<History />} />
           <Route path="/order" element={<Order />} />
           <Route path="/" element={<Home />} />
         </Switch>
