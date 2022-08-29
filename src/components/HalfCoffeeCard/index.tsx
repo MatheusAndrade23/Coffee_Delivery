@@ -53,7 +53,10 @@ export const HalfCoffeeCard = ({ coffee }: HalfCoffeeCardProps) => {
             addOne={addOne}
             removeOne={removeOne}
           />
-          <Remove onClick={handleRemoveCoffeeFromCart}>
+          <Remove
+            onClick={handleRemoveCoffeeFromCart}
+            title="Remover do Carrinho"
+          >
             <FaRegTrashAlt />
             <span>REMOVER</span>
           </Remove>
