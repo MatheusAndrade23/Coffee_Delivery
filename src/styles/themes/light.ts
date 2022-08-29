@@ -8,7 +8,7 @@ export const lightTheme = {
     'base-button': '#E6E5E5',
     'base-input': '#EDEDED',
     'base-card': '#F3F2F2',
-    'base-background': '#FAFAFA',
+    'base-background': '#EDEDED',
     'base-light-color': '#FFFF',
     '1-color': '#C47F17',
     '2-color': '#DBAC2C',

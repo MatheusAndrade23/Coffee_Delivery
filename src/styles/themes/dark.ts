@@ -1,1 +1,40 @@
-export const darkTheme = {};
+export const darkTheme = {
+  colors: {
+    'base-title': '#D7D5D5',
+    'base-subtitle': '#E6E5E5',
+    'base-text': '#EDEDED',
+    'base-label': '#F3F2F2',
+    'base-hover': '#272221',
+    'base-button': '#403937',
+    'base-input': '#574F4D',
+    'base-card': '#8D8686',
+    'base-background': '#4A4A4A',
+    'base-light-color': '#FFFF',
+    '1-color': '#C47F17',
+    '2-color': '#DBAC2C',
+    '3-color': '#F1E9C9',
+    '4-color': '#4B2995',
+    '5-color': '#8047F8',
+    '6-color': '#EBE5F9',
+    'red-color': '#FF6347',
+    'green-color': '#008000',
+  },
+  fonts: {
+    family: {
+      primary: '"Roboto", sans-serif',
+      secondary: '"Baloo 2", cursive',
+    },
+    sizes: {
+      xxhuge: '4.8rem',
+      xhuge: '4.4rem',
+      huge: '3.2rem',
+      big: '2.4rem',
+      medium2: '2rem',
+      medium: '1.8rem',
+      small4: '1.6rem',
+      small3: '1.4rem',
+      small2: '1.2rem',
+      small: '1rem',
+    },
+  },
+};
